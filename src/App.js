@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+// const { Component } = require("react");
+import { Component } from "react";
+import Profil from "./components/Profil/Profil";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    fullName: "Mehdi Hannachi",
+    show: false,
+  
+  };
+
+  toggle = () => {
+    this.setState({ show: !this.state.show });
+  };
+
+  componentDidMount() {
+    console.log("Mounting App component");
+  }
+
+  componentDidUpdate() {
+    console.log("Updating App component");
+  }
+
+  componentWillUnmount() {
+    console.log("Destruction App component");
+  }
+
+  render() {
+    return (
+      <>
+        <h1>Class Component</h1>
+
+        <button onClick={this.toggle}>
+          {this.state.show ? "Hide" : "Show"}
+        </button>
+
+        {this.state.show ? <Profil fullName={this.state.fullName} /> : null}
+      </>
+    );
+  }
 }
 
 export default App;
